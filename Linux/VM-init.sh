@@ -12,3 +12,6 @@ sudo apt-get install -y maven
 
 # Install git
 sudo apt-get install -y git
+
+# Install unzip
+sudo apt install -y unzip

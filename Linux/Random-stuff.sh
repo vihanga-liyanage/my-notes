@@ -204,3 +204,17 @@
 # Flush mysql connections by query
 # =============================================================================================================
     FLUSH HOSTS;
+
+# Apply proxy for curl
+# =============================================================================================================
+    export https_proxy=https://<PROXY_IP>:<PROXY_PORT>
+    export http_proxy=http://<PROXY_IP>:<PROXY_PORT>
+    export ftp_proxy=ftp://<PROXY_IP>:<PROXY_PORT>
+
+# Apply proxy for all browsers
+# =============================================================================================================
+    # Goto Settings -> Network -> Network Proxy
+
+# Apply proxy to java process
+# =============================================================================================================
+    java ... -Dhttp.proxyHost=localhost -Dhttp.proxyPort=8888 -Dhttps.proxyHost=localhost -Dhttps.proxyPort=8888
