@@ -18,7 +18,7 @@ echo "=========================================================="
 echo "Upgrading system..."
 echo "=========================================================="
 sudo apt-get upgrade -y
-sudo apt-get dist upgrade -y
+sudo apt-get dist-upgrade -y
 
 echo "=========================================================="
 echo "Installing Multimedia Codecs and Enable DVD Playback..."
@@ -38,8 +38,12 @@ sudo apt-get install -y flashplugin-installer pepperflashplugin-nonfree
 echo "=========================================================="
 echo "Installing JAVA..."
 echo "=========================================================="
-sudo apt-get install -y oracle-java7-installer
-sudo apt-get install -y oracle-java8-installer
+# 06 - Install JAVA
+# Download the latest JAVA 8 SE development kit from here: https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
+sudo mkdir /opt/java
+sudo tar -zxf ~/Downloads/jdk-8u5-linux-x64.tar.gz -C /opt/java
+update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_<YourVersion>/bin/java 100
+update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_<YourVersion>/bin/javac 100
 
 echo "=========================================================="
 echo "Installing Support for Archive Formats and Restricted Extras..."
@@ -126,4 +130,32 @@ echo "Installing apache maven..."
 echo "=========================================================="
 sudo apt-get install maven
 
+echo "=========================================================="
+echo "Installing Mac like gestures..."
+echo "=========================================================="
+sudo gpasswd -a $USER input
+sudo apt-get install ruby
+sudo apt-get install libinput-tools
+sudo apt-get install xdotool
+sudo gem install fusuma
+mkdir -p ~/.config/fusuma
+subl ~/.config/fusuma/config.yml
+	# Add below config and save.
+		# swipe:
+		#   3: 
+		#     left: 
+		#       command: 'xdotool key alt+Shift+Tab'
+		#     right: 
+		#       command: 'xdotool key alt+Tab'
+		#     up: 
+		#       command: 'xdotool key super+w'
 
+		# threshold:
+		#   swipe: 0.4
+		#   pinch: 0.4
+
+		# interval:
+		#   swipe: 0.8
+		#   pinch: 0.1
+sudo fusuma
+# Add to startup apps for day to day use.

@@ -4,10 +4,10 @@
 # 01 - Update your system
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get dist upgrade
+sudo apt-get dist-upgrade
 
 # 02 - Install additional drivers
-Software & Updates - Additional Drivers
+# Software & Updates - Additional Drivers
 
 # 03 - Install Multimedia Codecs and Enable DVD Playback
 sudo apt-add-repository ppa:mc3man/trusty-media
@@ -24,12 +24,14 @@ sudo apt-get install vlc
 sudo apt-get install flashplugin-installer pepperflashplugin-nonfree
 
 # 06 - Install JAVA
-sudo add-apt-repository -y ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java9-installer
+# Download the latest JAVA 8 SE development kit from here: https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
+sudo mkdir /opt/java
+sudo tar -zxf ~/Downloads/jdk-8u5-linux-x64.tar.gz -C /opt/java
+update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.8.0_<YourVersion>/bin/java 100
+update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.8.0_<YourVersion>/bin/javac 100
 
 # 07 - Install Support for Archive Formats and Restricted Extras
-sudo apt-get unace rar unrar p7zip-rar p7zip sharutils uudeview mpack arj cabextract lzip lunzip
+sudo apt-get install -y unace rar unrar p7zip-rar p7zip sharutils uudeview mpack arj cabextract lzip lunzip
 
 # 08 - Install LibreOffice Suites
 sudo apt-get install libreoffice libreoffice-gtk libreoffice-style-sifr
